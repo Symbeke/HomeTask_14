@@ -1,0 +1,25 @@
+  const phone_number = '8(777)-777-77-77';
+ function validatePhoneNumber(phone_number) {
+
+    if(phone_number[0] !== '8' && phone_number[0] + phone_number[1] !== '+7') return 'not correct adress number';
+
+     if(phone_number[0] == '+') phone_number = phone_number.slice(1, phone_number.length);    
+
+    if(phone_number.includes('+')) return 'phone number has extra plus';
+
+   if(phone_number.includes('.')) return 'phone number has dot';
+
+     const alfabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
+     for (const letter of alfabet) if(phone_number.includes(letter)) return 'phone number has letter';
+
+     const numbers = '0123456789';    
+     for(const item of phone_number) if(!numbers.includes(item)) phone_number = phone_number.replaceAll(item, '');
+    
+     if(phone_number.length !== 11) return 'not correct length of phone number';
+
+     console.log(phone_number);
+
+     return true;
+ }
+
+ console.log(validatePhoneNumber(phone_number));
